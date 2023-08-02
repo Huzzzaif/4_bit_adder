@@ -1,6 +1,5 @@
-package AbstractGateClass;
-
-public class AndGateInput extends AbstractGateInput {
+package FinalProject.Origin.FourBitAdderMagic.CodeLogic.AbstractGateClass;
+public class OrGateInput extends AbstractGateInput {
     @Override
     public int out() {
         return mUsiOut;
@@ -18,6 +17,6 @@ public class AndGateInput extends AbstractGateInput {
 
     @Override
     protected void update() {
-        mUsiOut = mUsiIn1 & mUsiIn2;
+        mUsiOut = mUsiIn1 | mUsiIn2;
     }
 }

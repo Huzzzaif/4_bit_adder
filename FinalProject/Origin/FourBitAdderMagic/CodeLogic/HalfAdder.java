@@ -1,3 +1,7 @@
+package FinalProject.Origin.FourBitAdderMagic.CodeLogic;
+
+import FinalProject.Origin.FourBitAdderMagic.CodeLogic.AbstractGateClass.LogicGates;
+
 public class HalfAdder {
     private LogicGates.AND andGate;
     private LogicGates.OR orGate;
@@ -43,19 +47,19 @@ public class HalfAdder {
         nandGate1.setIn1(carry);
     }
 
-    public static void main(String[] args) {
-        HalfAdder halfAdder = new HalfAdder();
+    // public static void main(String[] args) {
+    //     HalfAdder halfAdder = new HalfAdder();
 
-        int a = 1;
-        int b = 1;
+    //     int a = 1;
+    //     int b = 1;
 
-        halfAdder.connectGates();
-        int sum = halfAdder.getSum(a, b);
-        int carryOut = halfAdder.getCarryOut();
+    //     halfAdder.connectGates();
+    //     int sum = halfAdder.getSum(a, b);
+    //     int carryOut = halfAdder.getCarryOut();
 
-        System.out.println("Input A: " + a);
-        System.out.println("Input B: " + b);
-        System.out.println("Sum: " + sum);
-        System.out.println("Carry Out: " + carryOut);
-    }
+    //     System.out.println("Input A: " + a);
+    //     System.out.println("Input B: " + b);
+    //     System.out.println("Sum: " + sum);
+    //     System.out.println("Carry Out: " + carryOut);
+    // }
 }

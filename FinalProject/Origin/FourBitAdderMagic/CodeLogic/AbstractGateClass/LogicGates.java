@@ -1,3 +1,5 @@
+package FinalProject.Origin.FourBitAdderMagic.CodeLogic.AbstractGateClass;
+
 public class LogicGates {
 
     public static abstract class AbstractGate {

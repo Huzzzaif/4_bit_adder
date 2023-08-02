@@ -1,5 +1,6 @@
-package AbstractGateClass;
-public class OrGateInput extends AbstractGateInput {
+package FinalProject.Origin.FourBitAdderMagic.CodeLogic.AbstractGateClass;
+
+public class NotGateInput extends AbstractGateInput {
     @Override
     public int out() {
         return mUsiOut;
@@ -17,6 +18,6 @@ public class OrGateInput extends AbstractGateInput {
 
     @Override
     protected void update() {
-        mUsiOut = mUsiIn1 | mUsiIn2;
+        mUsiOut = ~mUsiIn1 & 0x1; // Using NAND gate to implement NOT
     }
 }

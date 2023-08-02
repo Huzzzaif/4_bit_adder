@@ -1,3 +1,4 @@
+package FinalProject.Origin.FourBitAdderMagic.CodeLogic;
     public class FourBitAdder {
         private FullAdder[] fullAdders;
 

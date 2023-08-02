@@ -1,4 +1,4 @@
-package AbstractGateClass;
+package FinalProject.Origin.FourBitAdderMagic.CodeLogic.AbstractGateClass;
 
 public class NandGateInput extends AbstractGateInput {
     @Override

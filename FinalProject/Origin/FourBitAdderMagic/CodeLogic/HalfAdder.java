@@ -15,34 +15,73 @@ public class HalfAdder {
         nandGate2 = new LogicGates.NAND(2);
     }
 
-    public void connectGates() {
-        nandGate1.setIn1(0);
-        nandGate1.setIn2(0);
-
-        nandGate2.setIn1(1);
-        nandGate2.setIn2(1);
-
-        andGate.setIn1(nandGate1.out());
-        andGate.setIn2(nandGate2.out());
-
-        orGate.setIn1(nandGate1.out());
-        orGate.setIn2(nandGate2.out());
+    public void connectGates(int a , int b) {
+        // Calculate A' and B' using NAND gates
+        int aNot = nandGate1.out();
+        nandGate1.setIn1(a);
+        nandGate1.setIn2(a);
+        int bNot = nandGate2.out();
+        nandGate2.setIn1(b);
+        nandGate2.setIn2(b);
+    
+        // Calculate the output of the first AND gate (A' AND B)
+        int and1 = andGate.out();
+        andGate.setIn1(aNot);
+        andGate.setIn2(b);
+    
+        // Calculate the output of the second AND gate (A AND B')
+        int and2 = andGate.out();
+        andGate.setIn1(a);
+        andGate.setIn2(bNot);
+    
+        // Calculate the output of the NAND gate (A' AND B) NAND (A AND B')
+        int carryOut = nandGate1.out();
+        nandGate1.setIn1(and1);
+        nandGate1.setIn2(and2);
+    
+        // Set the carry value for the Half Adder
+        andGate.setIn1(carryOut); // Connect carry to AND gate input A
+        andGate.setIn2(carryOut); // Connect carry to AND gate input B
     }
+    
+    
 
     public int getSum(int a, int b) {
+        // Calculate A' and B' using NAND gates
         nandGate1.setIn1(a);
-        nandGate1.setIn2(b);
-
-        nandGate2.setIn1(a);
+        nandGate1.setIn2(a);
+        int aNot = nandGate1.out();
+    
+        nandGate2.setIn1(b);
         nandGate2.setIn2(b);
-
-        return andGate.out();
-    }
-
-    public int getCarryOut() {
+        int bNot = nandGate2.out();
+    
+        // Calculate the first AND gate
+        andGate.setIn1(aNot);
+        andGate.setIn2(b);
+        int and1 = andGate.out();
+    
+        // Calculate the second AND gate
+        andGate.setIn1(a);
+        andGate.setIn2(bNot);
+        int and2 = andGate.out();
+    
+        // Calculate the final OR gate
+        orGate.setIn1(and1);
+        orGate.setIn2(and2);
+    
         return orGate.out();
     }
+    
 
+    public int getCarryOut(int a, int b) {
+        andGate.setIn1(a);
+        andGate.setIn2(b);
+    
+        return andGate.out(); // Return the output of the AND gate
+    }
+    
+    
     public void carryIn(int carry) {
         nandGate1.setIn1(carry);
     }

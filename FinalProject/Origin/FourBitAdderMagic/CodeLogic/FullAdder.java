@@ -12,14 +12,14 @@ public class FullAdder {
         halfAdder2 = new HalfAdder();
         orGate = new LogicGates.OR(1);
 
-        connectAdder();
+        connectAdder(0, 0, 0); // Default connection
     }
 
-    private void connectAdder() {
-        halfAdder1.connectGates();
-        halfAdder2.connectGates();
-        orGate.setIn1(halfAdder2.getCarryOut());
-        orGate.setIn2(halfAdder1.getCarryOut());
+    private void connectAdder(int a, int b, int c) {
+        halfAdder1.connectGates(a, b);
+        halfAdder2.connectGates(halfAdder1.getSum(a, b), c);
+        orGate.setIn1(halfAdder2.getCarryOut(a, b));
+        orGate.setIn2(halfAdder1.getCarryOut(a, b));
     }
 
     public int getSum(int a, int b, int carryIn) {
@@ -29,7 +29,8 @@ public class FullAdder {
         return sum2;
     }
 
-    public int getCarryOut() {
+    public int getCarryOut(int a, int b, int carryIn) {
+        connectAdder(a, b, carryIn); // Update the connections based on input
         return orGate.out();
     }
 
@@ -45,7 +46,7 @@ public class FullAdder {
     //     int carryIn = 1;
 
     //     int sum = fullAdder.getSum(a, b, carryIn);
-    //     int carryOut = fullAdder.getCarryOut();
+    //     int carryOut = fullAdder.getCarryOut(a, b, carryIn);
 
     //     System.out.println("Input A: " + a);
     //     System.out.println("Input B: " + b);
@@ -54,6 +55,7 @@ public class FullAdder {
     //     System.out.println("Carry Out: " + carryOut);
     // }
 
-    public void connectGates() {
+    public void connectGates(int a, int b, int c) {
+        connectAdder(a, b, c);
     }
 }

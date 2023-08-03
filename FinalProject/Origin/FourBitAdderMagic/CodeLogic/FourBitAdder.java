@@ -63,7 +63,7 @@ public class FourBitAdder {
             binaryB = "0" + binaryB;
         }
 
-        String sum = fourBitAdder.add(binaryA, binaryB);
+        String sum = fourBitAdder.add(binaryA, binaryB, 0);
 
         System.out.println("Input A: " + binaryA);
         System.out.println("Input B: " + binaryB);
